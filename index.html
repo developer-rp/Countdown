@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Date Countdown App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="countdown-container">
+      <header>
+        <h1>Countdown Timer</h1>
+        <div class="header-controls">
+          <div class="toggle-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <label for="theme-toggle" class="switch"></label>
+          </div>
+          <button id="fullscreen-btn" title="Toggle Fullscreen">
+            <svg
+              id="fullscreen-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 14H5v5h5v-2H7v-3zm0-4h2V7h3V5H7v5zm10 0h-3V5h5v5h-2V10zm-2 9h-5v-2h5v2z"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="input-section">
+        <input type="date" id="date-input" placeholder="Select a date" />
+        <button id="start-btn">Start Countdown</button>
+      </div>
+
+      
+
+      <div id="countdown">
+        <div class="time-segment">
+          <div class="number" id="days">0</div>
+          <span>Days</span>
+        </div>
+        <div class="time-segment" id="hoursSegment" style="display: none">
+          <div class="number" id="hours">0</div>
+          <span>Hours</span>
+        </div>
+        <div class="separator" id="hoursSeparator" style="display: none">:</div>
+
+        <div class="time-segment" id="minutesSegment" style="display: none">
+          <div class="number" id="minutes">0</div>
+          <span>Minutes</span>
+        </div>
+        <div class="separator" id="minutesSeparator" style="display: none">
+          :
+        </div>
+
+        <div class="time-segment" id="secondsSegment" style="display: none">
+          <div class="number" id="seconds">0</div>
+          <span>Seconds</span>
+        </div>
+      </div>
+
+      <div id="message"></div>
+      
+      <div>
+        <label><input type="checkbox" class="custom-checkbox" id="toggleHours" /> Show Hours</label><br>
+        <label><input type="checkbox" class="custom-checkbox" id="toggleMinutes" /> Show Minutes</label><br>
+        <label><input type="checkbox" class="custom-checkbox" id="toggleSeconds" /> Show Seconds</label><br>
+      </div>
+
+      <!-- New Current Date and Time Section -->
+      <div id="current-datetime">
+        <span id="current-date">Date: --</span>
+        <span id="current-time">Time: --</span>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

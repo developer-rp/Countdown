@@ -1,0 +1,306 @@
+/* CSS Variables for Light and Dark Themes */
+:root {
+  --background-color: #f4f4f9;
+  --text-color: #333;
+  --container-bg: #fff;
+  --button-bg: #007bff;
+  --button-hover-bg: #0056b3;
+  --input-bg: #fff;
+  --separator-color: #333;
+  --header-height: 60px;
+  --datetime-text-color: #555;
+}
+
+body.dark {
+  --background-color: #121212;
+  --text-color: #f4f4f9;
+  --container-bg: #1e1e1e;
+  --button-bg: #bb86fc;
+  --button-hover-bg: #985eff;
+  --input-bg: #2c2c2c;
+  --separator-color: #f4f4f9;
+  --datetime-text-color: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown-container {
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  padding: 40px 30px;
+  border-radius: 12px;
+  background-color: var(--container-bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.3s;
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input:checked + .switch {
+  background-color: var(--button-bg);
+}
+
+input:checked + .switch::before {
+  transform: translateX(26px);
+}
+
+#fullscreen-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  color: var(--text-color);
+}
+
+#fullscreen-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#fullscreen-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.input-section input {
+  padding: 12px;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.input-section button {
+  padding: 12px 25px;
+  border: none;
+  background-color: var(--button-bg);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.input-section button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.time-segment {
+  margin: 15px;
+  text-align: center;
+  animation: popIn 0.5s ease forwards;
+}
+
+.number {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: countFadeIn 1s forwards;
+}
+
+.separator {
+  font-size: 60px;
+  margin: 0 15px;
+  color: var(--separator-color);
+}
+
+#message {
+  margin-top: 30px;
+  font-size: 28px;
+  color: var(--button-bg);
+}
+
+/* New Styles for Current Date and Time */
+#current-datetime {
+  margin-top: auto; /* Pushes the section to the bottom */
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 18px;
+  color: var(--datetime-text-color);
+}
+
+body.dark #current-datetime {
+  border-top: 1px solid #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes countFadeIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .countdown-container {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .number {
+    font-size: 48px;
+  }
+
+  .separator {
+    font-size: 48px;
+    margin: 0 10px;
+  }
+
+  .input-section input, .input-section button {
+    width: 100%;
+    max-width: none;
+  }
+
+  .time-segment {
+    margin: 10px;
+  }
+
+  #current-datetime {
+    font-size: 16px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .countdown-container {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .number {
+    font-size: 36px;
+  }
+
+  .separator {
+    font-size: 36px;
+    margin: 0 8px;
+  }
+
+  .input-section input, .input-section button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #message {
+    font-size: 22px;
+  }
+
+  #current-datetime {
+    font-size: 14px;
+    gap: 10px;
+  }
+}
